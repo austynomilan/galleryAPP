@@ -1,3 +1,18 @@
 .homeContainer {
   max-width: 100%;
+}
+.homeContainer .image_card {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(80px, 170px));
+  margin: 5px 0;
+  justify-content: center;
+}
+.homeContainer .image_card .image_holder img {
+  width: 150px;
+  height: 150px;
+  border-radius: 6px;
+  transition: 0.5s ease-in-out;
+}
+.homeContainer .image_card .image_holder img:hover {
+  box-shadow: 5px 3px 3px black;
 }/*# sourceMappingURL=Home.css.map */
