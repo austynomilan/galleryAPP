@@ -1,0 +1,40 @@
+.navContainer {
+  max-width: 100%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: 70px;
+  }
+  .user {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(254, 139, 24);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: rgb(16, 246, 169);
+    }
+  }
+
+  .search {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 0 4px;
+    height: 30px;
+    border-radius: 6px;
+    input {
+      width: 100%;
+      border: 0;
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+}
