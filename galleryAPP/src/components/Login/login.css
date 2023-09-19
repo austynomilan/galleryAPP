@@ -1,0 +1,38 @@
+.login_container {
+  position: absolute;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  opacity: 0.2;
+  font-family: sans-serif;
+}
+
+.login_card {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 300px;
+  height: auto;
+  position: absolute;
+  top: 30%;
+  right: 40%;
+  padding: 10px;
+}
+.login_card section {
+  width: 100%;
+}
+.login_card section:first-child {
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+.login_card section input {
+  margin-top: 10px;
+  width: 100%;
+  height: 30px;
+  background-color: rgb(173, 168, 168);
+  border: 0;
+  border-radius: 8px;
+}
+.login_card section input:focus {
+  outline: 0;
+}/*# sourceMappingURL=login.css.map */
