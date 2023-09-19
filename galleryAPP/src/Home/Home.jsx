@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Nav/nav';
 import 'react-loading-skeleton/dist/skeleton.css';
 import data from '../Data/data.json';
-import Login from '../components/Login/login';
 import CardSkeleton from '../components/ui_Kit/cardSkeleton';
 import './Home.scss';
 
@@ -19,7 +18,6 @@ export default function Home() {
     <>
       <div className='homeContainer'>
         <Navbar />
-        <Login />
         <div className='image_card'>
           {loading ? (
             <CardSkeleton numCards={25} />
