@@ -63,7 +63,7 @@ export default function Home() {
       <div className='homeContainer'>
         <Navbar />
         <div className='image_card'>
-          <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+          <DndContext  collisionDetection={closestCenter} onDragEnd={onDragEnd}>
             <SortableContext
               items={images}
               strategy={verticalListSortingStrategy}
