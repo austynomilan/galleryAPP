@@ -12,6 +12,7 @@
   height: 150px;
   border-radius: 6px;
   transition: 0.5s ease-in-out;
+  color: #313030;
 }
 .homeContainer .image_card .image_holder img:hover {
   box-shadow: 5px 3px 3px black;
