@@ -28,9 +28,10 @@ export default function nav({ onSearchChange, search, toggleLoginState, login })
         <section className='user'>
           <FaUser
             onClick={toggleLoginState}
-            size={30}
-            color='rgb(56, 30, 5)'
+            size={12}
+            color='#fff'
           />
+          <p>Sign in</p>
         </section>
       </div>
       {login && <Login toggleLoginState={toggleLoginState} />}

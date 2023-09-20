@@ -5,6 +5,10 @@
   align-items: center;
   border-bottom: 1px solid #313030;
 }
+.navContainer p {
+  font-weight: 700;
+  color: #fff;
+}
 .navContainer img {
   width: 70px;
 }
@@ -40,6 +44,13 @@
 @media screen and (max-width: 600px) {
   .navContainer {
     padding: 0 15px;
+  }
+  .navContainer .user {
+    height: 50px;
+    width: 52px;
+  }
+  .navContainer .user p {
+    font-size: 10px;
   }
   .navContainer img {
     width: 50px;

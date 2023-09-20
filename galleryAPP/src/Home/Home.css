@@ -22,4 +22,8 @@
   .homeContainer .image_card {
     grid-template-columns: repeat(3, minmax(80px, 170px));
   }
+  .homeContainer .image_card img {
+    width: 75px;
+    height: 75px;
+  }
 }/*# sourceMappingURL=Home.css.map */
