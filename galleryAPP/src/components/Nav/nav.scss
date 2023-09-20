@@ -38,3 +38,16 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+
+  .navContainer {
+    img {
+      width: 50px;
+    }
+    padding: 0 15px;
+    .search {
+      width: 350px;
+    }
+  }
+}

@@ -19,3 +19,11 @@
   }   
     }
 }
+
+@media screen and (max-width: 600px) {
+  .homeContainer{
+    .image_card{
+      grid-template-columns: repeat( 3, minmax(80px, 170px) );  
+    }
+  }
+}

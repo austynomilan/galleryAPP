@@ -19,12 +19,13 @@
   padding: 10px;
   box-shadow: 10px 5px 5px black;
 }
+.login_card p {
+  color: red;
+  font-size: 12px;
+}
 .login_card .user {
   display: flex;
   justify-content: center;
-}
-.login_card section {
-  width: 100%;
 }
 .login_card section:first-child {
   margin-bottom: 30px;
@@ -40,4 +41,14 @@
 }
 .login_card section input:focus {
   outline: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .login_container {
+    position: fixed;
+    padding-left: 30px;
+  }
+  .login_container .login_card {
+    right: 10%;
+  }
 }/*# sourceMappingURL=login.css.map */

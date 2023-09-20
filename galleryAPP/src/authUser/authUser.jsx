@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Nav/nav';
 import 'react-loading-skeleton/dist/skeleton.css';
 import data from '../Data/data.json';
-import { TouchSensor, closestCenter, DndContext } from '@dnd-kit/core';
+import { TouchSensor, closestCenter, DndContext, useSensor, MouseSensor, useSensors } from '@dnd-kit/core';
 import {
   arrayMove,
   SortableContext,
@@ -40,6 +40,15 @@ export default function authUser() {
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState(data.GirlImages);
   const [search, setSearch] = useState('');
+const mouse = useSensor(MouseSensor),
+touch = useSensor(TouchSensor, {
+  activationConstraint:{
+    delay: 250,
+    tolerance: 5,
+  },
+});
+
+const sensors = useSensors(mouse, touch)
 
   const onDragEnd = (event) => {
     const { active, over } = event;
@@ -68,7 +77,7 @@ export default function authUser() {
       <div className='homeContainer'>
         <Navbar onSearchChange={handleSearchChange} search={search} />
         <div className='image_card'>
-          <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
             <SortableContext
               items={images}
               strategy={verticalListSortingStrategy}
