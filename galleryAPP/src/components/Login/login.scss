@@ -17,6 +17,27 @@
   right: 40%;
   padding: 10px;
   box-shadow: 10px 5px 5px black;
+  .closer{
+    color: rgb(233, 77, 77);
+    &:hover{
+      color: red;
+    }
+  }
+  button{
+    background-color: green;
+    color: whitesmoke;
+    width: 100px;
+    padding: 3px 0;
+    border: 1px solid green;
+    font-weight: 700;
+    border-radius: 6px;
+    &:active{
+      transform: scaleX(.98);
+    }
+    &:hover{
+      background-color: rgb(42, 172, 42);
+    }
+  }
   p {
     color: red;
     font-size: 12px;

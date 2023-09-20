@@ -19,6 +19,27 @@
   padding: 10px;
   box-shadow: 10px 5px 5px black;
 }
+.login_card .closer {
+  color: rgb(233, 77, 77);
+}
+.login_card .closer:hover {
+  color: red;
+}
+.login_card button {
+  background-color: green;
+  color: whitesmoke;
+  width: 100px;
+  padding: 3px 0;
+  border: 1px solid green;
+  font-weight: 700;
+  border-radius: 6px;
+}
+.login_card button:active {
+  transform: scaleX(0.98);
+}
+.login_card button:hover {
+  background-color: rgb(42, 172, 42);
+}
 .login_card p {
   color: red;
   font-size: 12px;

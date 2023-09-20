@@ -4,8 +4,7 @@ import Logo from '../../assets/gallry.png';
 import Login from '../Login/login';
 import { FaSearch, FaUser } from 'react-icons/fa';
 
-export default function nav({ onSearchChange, search }) {
-  const [login, setLogin] = useState(false);
+export default function nav({ onSearchChange, search, toggleLoginState, login }) {
 
   const handleSearchChange = (e) => {
     const inputValue = e.target.value;
@@ -28,13 +27,13 @@ export default function nav({ onSearchChange, search }) {
         </section>
         <section className='user'>
           <FaUser
-            onClick={() => setLogin(!login)}
+            onClick={toggleLoginState}
             size={30}
             color='rgb(56, 30, 5)'
           />
         </section>
       </div>
-      {login && <Login />}
+      {login && <Login toggleLoginState={toggleLoginState} />}
     </>
   );
 }

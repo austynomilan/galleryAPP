@@ -65,7 +65,7 @@ const sensors = useSensors(mouse, touch)
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
   }, []);
 
   const handleSearchChange = (value) => {

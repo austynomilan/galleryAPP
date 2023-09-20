@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import './login.scss';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaTimes } from 'react-icons/fa';
 import { auth } from '../Firebase/auth';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 
 
-export default function login() {
+export default function login({toggleLoginState }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -55,6 +55,7 @@ export default function login() {
     <>
       <div className='login_container'></div>
       <div className='login_card'>
+        <FaTimes onClick={toggleLoginState} className='closer' size={20} cursor={"pointer"} />
         <div className='user'>
           <FaUser size={30} />
         </div>
