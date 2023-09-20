@@ -4,14 +4,12 @@ import Logo from '../../assets/gallry.png';
 import Login from '../Login/login';
 import { FaSearch, FaUser } from 'react-icons/fa';
 
-
 export default function nav({ onSearchChange, search }) {
   const [login, setLogin] = useState(false);
-  
 
   const handleSearchChange = (e) => {
     const inputValue = e.target.value;
-    onSearchChange(inputValue); 
+    onSearchChange(inputValue);
   };
 
   return (

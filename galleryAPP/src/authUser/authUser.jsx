@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Nav/nav';
 import 'react-loading-skeleton/dist/skeleton.css';
 import data from '../Data/data.json';
-import { TouchSensor , closestCenter, DndContext } from '@dnd-kit/core';
+import { TouchSensor, closestCenter, DndContext } from '@dnd-kit/core';
 import {
   arrayMove,
   SortableContext,
@@ -12,7 +12,6 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import CardSkeleton from '../components/ui_Kit/cardSkeleton';
 import '../Home/Home.scss';
-
 
 const SortableImage = ({ image }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -40,6 +39,7 @@ const SortableImage = ({ image }) => {
 export default function authUser() {
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState(data.GirlImages);
+  const [search, setSearch] = useState('');
 
   const onDragEnd = (event) => {
     const { active, over } = event;
@@ -59,12 +59,16 @@ export default function authUser() {
     }, 2000);
   }, []);
 
+  const handleSearchChange = (value) => {
+    setSearch(value);
+  };
+
   return (
     <>
       <div className='homeContainer'>
-        <Navbar />
+        <Navbar onSearchChange={handleSearchChange} search={search} />
         <div className='image_card'>
-          <DndContext  collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+          <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
             <SortableContext
               items={images}
               strategy={verticalListSortingStrategy}
@@ -72,9 +76,15 @@ export default function authUser() {
               {loading ? (
                 <CardSkeleton numCards={25} />
               ) : (
-                images.map((image) => (
-                  <SortableImage key={image.id} image={image} />
-                ))
+                images
+                  .filter((image) =>
+                    image.description
+                      .toLowerCase()
+                      .includes(search.toLowerCase())
+                  )
+                  .map((image) => (
+                    <SortableImage key={image.id} image={image} />
+                  ))
               )}
             </SortableContext>
           </DndContext>
