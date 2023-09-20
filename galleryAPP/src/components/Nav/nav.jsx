@@ -25,11 +25,11 @@ export default function nav({ onSearchChange, search, toggleLoginState, login })
           />
           <FaSearch style={{ cursor: 'pointer' }} />
         </section>
-        <section className='user'>
+        <section onClick={toggleLoginState} className='user'>
           <FaUser
-            onClick={toggleLoginState}
             size={12}
-            color='#fff'
+            color='#000'
+            className='Fauser'
           />
           <p>Sign in</p>
         </section>
