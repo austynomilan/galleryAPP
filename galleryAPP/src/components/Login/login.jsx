@@ -8,21 +8,48 @@ import { signInWithEmailAndPassword } from '@firebase/auth';
 export default function login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
+  const validateForm = () => {
+    let isValid = true;
+
+    // Validate email
+    if (!email || !email.includes('@')) {
+      setEmailError('Invalid email. Please enter a valid email address.');
+      isValid = false;
+    } else {
+      setEmailError('');
+    }
+
+    // Validate password
+    if (password.length < 6) {
+      setPasswordError('Password should be at least 6 characters long.');
+      isValid = false;
+    } else {
+      setPasswordError('');
+    }
+
+    return isValid;
+  };
+
 
   const signIn = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
+
+    if(validateForm()){
+      signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
         window.location.href = '/userSignIn';
       })
       .catch((error) => {
-        console.log(error);
+        setEmailError('In valid user. Please try again later.');
       });
       setEmail('')
       setPassword('')
-  };
+  }; 
+    }
+   
 
   return (
     <>
@@ -41,7 +68,7 @@ export default function login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <p>Invalid Email. Pls input a valid mail</p>
+            <p>{emailError}</p>
           </section>
           <section>
             <span>Password</span>
@@ -51,7 +78,7 @@ export default function login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <p>This Password is not recognized</p>
+            <p>{passwordError}</p>
           </section>
           <button type='submit'>sign in</button>
         </form>
