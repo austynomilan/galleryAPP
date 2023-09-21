@@ -1,19 +1,36 @@
 import { useState } from 'react';
 import './signup.scss';
 import SignIn from '../Notification/signIn';
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { auth } from '../Firebase/auth';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 
-export default function signup({ toggleLoginState, toggleAuthenticate }) {
+export default function signup({ toggleAuthenticate }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-
+  const [showPassword, setShowPassword] = useState(false);
 
   const signUp = (e) => {
     e.preventDefault();
+
+    if (!email || !email.includes('@')) {
+        setEmailError('Please enter a valid email address.');
+        return; // Don't proceed with sign-up if email is invalid
+      } else {
+        setEmailError('');
+      }
+    
+      // Validate password
+      if (password.length < 6) {
+        setPasswordError('Password should be at least 6 characters long.');
+        return; // Don't proceed with sign-up if password is too short
+      } else {
+        setPasswordError('');
+      }
+
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) =>{
         const user = userCredential.user;
@@ -30,6 +47,10 @@ export default function signup({ toggleLoginState, toggleAuthenticate }) {
       setPassword('');
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <div className='login_container'>
@@ -42,24 +63,40 @@ export default function signup({ toggleLoginState, toggleAuthenticate }) {
             <section>
               <span>Email</span>
               <br />
-              <input
+              <div className="input">
+                 <input
                 type='text'
                 autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              </div>
+             
               <p>{emailError}</p>
             </section>
             <section>
               <span>Password</span>
               <br />
-              <input
-                type='password'
+              <div className='input'>
+                <input
+                type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {showPassword ? (
+                <span className='eyez'>
+                  <FaEye onClick={togglePasswordVisibility}/>
+                </span>
+              ) : (
+                <span className='eyez'>
+                  <FaEyeSlash onClick={togglePasswordVisibility}/>
+                </span>
+              )}
+              </div>
+              
               <p>{passwordError}</p>
             </section>
+            <h5>use login if returning...</h5>
             <button type='submit'>sign up</button>
           </form>
         </div>

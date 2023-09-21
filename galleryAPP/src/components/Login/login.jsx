@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './login.scss';
-import { FaUser, FaTimes } from 'react-icons/fa';
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { auth } from '../Firebase/auth';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 
@@ -9,13 +9,14 @@ export default function login({ toggleAuthenticate }) {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const validateForm = () => {
     let isValid = true;
 
     // Validate email
     if (!email || !email.includes('@')) {
-      setEmailError('Invalid email. Please enter a valid email address.');
+      setEmailError('Please enter a valid email address.');
       isValid = false;
     } else {
       setEmailError('');
@@ -30,6 +31,10 @@ export default function login({ toggleAuthenticate }) {
     }
 
     return isValid;
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const signIn = (e) => {
@@ -58,6 +63,8 @@ export default function login({ toggleAuthenticate }) {
           <form onSubmit={signIn}>
             <section>
               <span>Email</span>
+             <div className="input">
+             
               <br />
               <input
                 type='text'
@@ -65,16 +72,28 @@ export default function login({ toggleAuthenticate }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+             </div>
               <p>{emailError}</p>
             </section>
             <section>
               <span>Password</span>
               <br />
-              <input
-                type='password'
+              <div className='input'>
+                <input
+                type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {showPassword ? (
+                <span className='eye'>
+                  <FaEye onClick={togglePasswordVisibility}/>
+                </span>
+              ) : (
+                <span className='eye'>
+                  <FaEyeSlash onClick={togglePasswordVisibility}/>
+                </span>
+              )}
+              </div>
               <p>{passwordError}</p>
             </section>
             <h5>forgot passwor?</h5>

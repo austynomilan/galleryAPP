@@ -32,6 +32,15 @@
   height: auto;
   padding: 10px;
   box-shadow: 10px 5px 5px black;
+  
+    .eye{
+    position: absolute;
+    top: 57.4%;
+    right: 53%;
+    cursor: pointer;
+  }
+  
+  
   .closer{
     color: rgb(233, 77, 77);
     &:hover{
@@ -63,21 +72,30 @@
   }
   section {
     &:first-child {
-      margin-bottom: 10px;
+      margin-bottom: 30px;
       margin-top: 10px;
     }
    
 
-    input {
+    .input {
       margin-top: 10px;
       width: 100%;
+      display: flex;
+      align-items: center;
       height: 30px;
       background-color: rgb(173, 168, 168);
       border: 0;
       border-radius: 8px;
-      &:focus {
+      input{
+        width: 80%;
+        height: 21px;
+        background-color: transparent;
+        border: 0;
+        &:focus {
         outline: 0;
       }
+      }
+      
     }
   }
 }
@@ -87,6 +105,10 @@
       position: fixed;
     .login_card {
         position: initial;
+        .eye{
+          top: 55.5%;
+          right: 56%;
+        }
     }
     }
 }
