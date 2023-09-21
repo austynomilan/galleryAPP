@@ -44,3 +44,13 @@
     }
   }
 }
+@media screen and (max-width: 600px) {
+  .signin__container {
+    .sign_card {
+      .close {
+        top: 39%;
+        right: 37%;
+      }
+    }
+  }
+}
