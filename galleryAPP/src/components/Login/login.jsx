@@ -56,7 +56,8 @@ export default function login({ toggleAuthenticate }) {
   return (
     <>
       <div className='login_container'>
-        <div className='login_card'>
+        <div className='authCard'>
+          <div className='login_card'>
           <div className='user'>
             <h2>LOGIN</h2>
           </div>
@@ -105,6 +106,8 @@ export default function login({ toggleAuthenticate }) {
           <p>Enter your email and start your journey with us</p>
           <button onClick={toggleAuthenticate}>SIGN UP</button>
         </div>
+        </div>
+        
       </div>
     </>
   );

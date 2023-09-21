@@ -7,6 +7,9 @@
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
+  .authCard{
+display: flex;
+  }
 .support_card{
   background-color: red;
   width: 300px;
@@ -34,10 +37,8 @@
   box-shadow: 10px 5px 5px black;
   
     .eye{
-    position: absolute;
-    top: 57.4%;
-    right: 53%;
     cursor: pointer;
+    margin: 5px -10px 0 0;
   }
   
   
@@ -103,6 +104,9 @@
 @media screen and (max-width: 600px) {
     .login_container {
       position: fixed;
+      .authCard{
+        width: 320px;
+      }
     .login_card {
         position: initial;
         .eye{

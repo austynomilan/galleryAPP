@@ -55,7 +55,8 @@ export default function signup({ toggleAuthenticate }) {
     <>
       <div className='login_container'>
       {successMessage && <SignIn successMessage={successMessage} /> }
-        <div className='login_card'>
+      <div className='authCard'>
+      <div className='login_card'>
           <div className='user'>
             <h2>SIGN UP</h2>
           </div>
@@ -84,11 +85,11 @@ export default function signup({ toggleAuthenticate }) {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {showPassword ? (
-                <span className='eyez'>
+                <span className='eye'>
                   <FaEye onClick={togglePasswordVisibility}/>
                 </span>
               ) : (
-                <span className='eyez'>
+                <span className='eye'>
                   <FaEyeSlash onClick={togglePasswordVisibility}/>
                 </span>
               )}
@@ -105,6 +106,7 @@ export default function signup({ toggleAuthenticate }) {
           <p>If you a returning user..</p>
           <button onClick={toggleAuthenticate}>LOGIN</button>
         </div>
+      </div>
       </div>
     </>
   );
