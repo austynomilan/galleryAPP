@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Nav/nav';
 import 'react-loading-skeleton/dist/skeleton.css';
-import data from '../Data/data.json';
-import SignIn from '../components/Notification/signIn';
-import CardSkeleton from '../components/ui_Kit/cardSkeleton';
-import './Home.scss';
+import Auther from '../components/Auth/Auther';
+
+
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [showLogin, setShowLogin] = useState(false);
   const [login, setLogin] = useState(false);
-  let touchTimeout;
+ 
 
   const toggleLoginState = () => {
     setLogin(!login);
@@ -24,25 +22,6 @@ export default function Home() {
   const handleImageDrag = () => {
     setShowLogin(true);
   };
-
-  const handleTouchImageDrag = (e) => {
-    // Check if the target element of the touch event is an image
-    if (e.target.tagName.toLowerCase() === 'img') {
-      // Add a delay of 300 milliseconds (adjust as needed)
-      touchTimeout = setTimeout(() => {
-        setShowLogin(true);
-      }, 500);
-    }
-  };
-
-  // Clear the touchTimeout on component unmount
-  useEffect(() => {
-    return () => {
-      if (touchTimeout) {
-        clearTimeout(touchTimeout);
-      }
-    };
-  }, [touchTimeout]);
 
 
   useEffect(() => {
@@ -58,40 +37,7 @@ export default function Home() {
   return (
     <>
       <div className='homeContainer'>
-        <Navbar
-          onSearchChange={handleSearchChange}
-          login={login}
-          toggleLoginState={toggleLoginState}
-          search={search}
-        />
-        <div className='image_card'>
-          {showLogin && (
-            <SignIn
-              toggleLoginState={toggleLoginState}
-              handleCloseSignIn={handleCloseSignIn}
-            />
-          )}
-          {loading ? (
-            <CardSkeleton numCards={25} />
-          ) : (
-            data.GirlImages.filter((image) =>
-              image.description.toLowerCase().includes(search.toLowerCase())
-            ).map((image) => (
-              <div className='image_holder' key={image.id}>
-                {
-                  <img
-                    src={image['image-url']}
-                    draggable='true'
-                    alt={image.description}
-                    onDragStart={handleImageDrag}
-                    onTouchStart={handleTouchImageDrag}
-                  />
-                }
-                <span>{image.description}</span>
-              </div>
-            ))
-          )}
-        </div>
+      <Auther />
       </div>
     </>
   );
