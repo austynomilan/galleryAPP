@@ -65,7 +65,7 @@ export default function authUser() {
     touch = useSensor(TouchSensor, {
       activationConstraint: {
         delay: 250,
-        tolerance: 5,
+        tolerance: 2,
       },
     });
 
