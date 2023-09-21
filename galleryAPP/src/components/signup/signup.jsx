@@ -20,7 +20,7 @@ export default function signup({ toggleLoginState, toggleAuthenticate }) {
         setSuccessMessage('Sign-up was successful! Redirecting...');
         setTimeout(() => {
             window.location.href = '/userSignIn';
-          }, 3000); // Redirect after 3 seconds
+          }, 1000); 
     }).catch((error)=>{
         const errorCode = error.code;
         const errorMessage = error.message; 
