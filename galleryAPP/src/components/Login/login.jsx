@@ -53,8 +53,8 @@ export default function login({toggleLoginState }) {
 
   return (
     <>
-      <div className='login_container'></div>
-      <div className='login_card'>
+      <div className='login_container'>
+        <div className='login_card'>
         <FaTimes onClick={toggleLoginState} className='closer' size={20} cursor={"pointer"} />
         <div className='user'>
           <FaUser size={30} />
@@ -84,6 +84,8 @@ export default function login({toggleLoginState }) {
           <button type='submit'>sign in</button>
         </form>
       </div>
+      </div>
+      
     </>
   );
 }
