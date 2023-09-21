@@ -11,6 +11,7 @@ export default function Home() {
   const [search, setSearch] = useState('');
   const [showLogin, setShowLogin] = useState(false);
   const [login, setLogin] = useState(false);
+  let touchTimeout;
 
   const toggleLoginState = () => {
     setLogin(!login);
@@ -24,15 +25,30 @@ export default function Home() {
     setShowLogin(true);
   };
 
-  const handleTouchImageDrag = () => {
-    // Handle touch-based drag action here
-    setShowLogin(true);
+  const handleTouchImageDrag = (e) => {
+    // Check if the target element of the touch event is an image
+    if (e.target.tagName.toLowerCase() === 'img') {
+      // Add a delay of 300 milliseconds (adjust as needed)
+      touchTimeout = setTimeout(() => {
+        setShowLogin(true);
+      }, 500);
+    }
   };
+
+  // Clear the touchTimeout on component unmount
+  useEffect(() => {
+    return () => {
+      if (touchTimeout) {
+        clearTimeout(touchTimeout);
+      }
+    };
+  }, [touchTimeout]);
+
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 5000);
   }, []);
 
   const handleSearchChange = (value) => {

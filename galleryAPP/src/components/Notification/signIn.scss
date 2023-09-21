@@ -48,8 +48,12 @@
   .signin__container {
     .sign_card {
       .close {
-        top: 39%;
-        right: 37%;
+        top: 37%;
+        right: 27%;
+      }
+      p {
+        font-size: .9rem;
+        font-weight: 700;
       }
     }
   }

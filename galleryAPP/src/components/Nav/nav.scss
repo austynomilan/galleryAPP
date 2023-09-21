@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #313030;
-  p{
+  p {
     font-weight: 700;
     color: #000;
   }
@@ -18,9 +18,9 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-   &:hover{
-    border-bottom: 1px solid black;
-   }
+    &:hover {
+      border-bottom: 1px solid black;
+    }
   }
 
   .search {
@@ -42,16 +42,14 @@
 }
 
 @media screen and (max-width: 600px) {
-
   .navContainer {
-   
     .user {
       height: 50px;
       width: 52px;
 
-       p{
-        font-size: 10px;
-    }
+      p {
+        font-size: 8px;
+      }
     }
     img {
       width: 50px;
