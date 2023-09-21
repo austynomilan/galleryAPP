@@ -4,12 +4,24 @@ import Logo from '../../assets/gallry.png';
 import Login from '../Login/login';
 import { FaSearch, FaUser } from 'react-icons/fa';
 
-export default function nav({ onSearchChange, search, toggleLoginState, login }) {
-
+export default function nav({
+  onSearchChange,
+  search,
+  toggleLoginState,
+  login,
+  handleLogout,
+  isAuthUserPage
+}) {
   const handleSearchChange = (e) => {
     const inputValue = e.target.value;
     onSearchChange(inputValue);
   };
+
+  const handleLogoutClick = () => {
+    handleLogout(); 
+    toggleLoginState(false)
+  };
+  
 
   return (
     <>
@@ -25,13 +37,13 @@ export default function nav({ onSearchChange, search, toggleLoginState, login })
           />
           <FaSearch style={{ cursor: 'pointer' }} />
         </section>
-        <section onClick={toggleLoginState} className='user'>
-          <FaUser
-            size={12}
-            color='#000'
-            className='Fauser'
-          />
-          <p>Sign in</p>
+        <section className='user'>
+          <FaUser size={12} color='#000' className='Fauser' />
+          {!isAuthUserPage && !login ? (
+            <p onClick={toggleLoginState}>Sign in</p>
+          ) : (
+            <p onClick={handleLogoutClick}>log out</p>
+          )}
         </section>
       </div>
       {login && <Login toggleLoginState={toggleLoginState} />}

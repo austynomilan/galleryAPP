@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Nav/nav';
 import 'react-loading-skeleton/dist/skeleton.css';
-import Login from '../components/Login/login';
 import data from '../Data/data.json';
 import SignIn from '../components/Notification/signIn';
 import CardSkeleton from '../components/ui_Kit/cardSkeleton';

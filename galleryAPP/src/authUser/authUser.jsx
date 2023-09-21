@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Nav/nav';
 import 'react-loading-skeleton/dist/skeleton.css';
 import data from '../Data/data.json';
-import { TouchSensor, closestCenter, DndContext, useSensor, MouseSensor, useSensors } from '@dnd-kit/core';
+import { auth } from '../components/Firebase/auth';
+import {
+  TouchSensor,
+  closestCenter,
+  DndContext,
+  useSensor,
+  MouseSensor,
+  useSensors,
+} from '@dnd-kit/core';
 import {
   arrayMove,
   SortableContext,
@@ -12,6 +20,7 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import CardSkeleton from '../components/ui_Kit/cardSkeleton';
 import '../Home/Home.scss';
+
 
 const SortableImage = ({ image }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -40,15 +49,27 @@ export default function authUser() {
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState(data.GirlImages);
   const [search, setSearch] = useState('');
-const mouse = useSensor(MouseSensor),
-touch = useSensor(TouchSensor, {
-  activationConstraint:{
-    delay: 250,
-    tolerance: 5,
-  },
-});
+  const [isAuthUserPage, setIsAuthUserPage] = useState(true);
 
-const sensors = useSensors(mouse, touch)
+  const handleLogout = () => {
+    auth.signOut()
+      .then(() => {
+        window.location.href = '/';
+      })
+      .catch((error) => {
+        console.log('Error signing out:', error);
+      });
+  };
+
+  const mouse = useSensor(MouseSensor),
+    touch = useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5,
+      },
+    });
+
+  const sensors = useSensors(mouse, touch);
 
   const onDragEnd = (event) => {
     const { active, over } = event;
@@ -75,9 +96,13 @@ const sensors = useSensors(mouse, touch)
   return (
     <>
       <div className='homeContainer'>
-        <Navbar onSearchChange={handleSearchChange} search={search} />
+        <Navbar isAuthUserPage={isAuthUserPage} handleLogout={handleLogout} onSearchChange={handleSearchChange} search={search} />
         <div className='image_card'>
-          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={onDragEnd}
+          >
             <SortableContext
               items={images}
               strategy={verticalListSortingStrategy}
